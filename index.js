@@ -1,12 +1,12 @@
 const bodyTableTag = document.querySelector("tbody");
-const tableTag = document.querySelector("table")
+const tableTag = document.querySelector("table");
 
-function createBookRow() {
+function createBookRow(title, author,price) {
     return `
     <tr>
-    <td>Il était une fois</td>
-    <td>Michael DUPONT</td>
-    <td>15.44 €</td>
+    <td>${title}</td>
+    <td>${author}</td>
+    <td>${price} €</td>
     </tr>
     `    ;
 }
@@ -19,20 +19,29 @@ const books = [
     {
         title: "Il était une fois",
         author: "Michael DUPONT",
-        price: "15.44 $",
+        price: 15.44,
         available: true
     },
     {
         title: "Biographie d'un auteur",
         author: "Emilie DURAND",
-        price: "6.88 $",
+        price: 6.88,
         available: true
     },
     {
         title: "Il était deux fois",
         author: "Stéphanie BERTRAND",
-        price: "23.99 $",
+        price: 23.99,
         available: false
     },
 ];
+
+if (books.length >0) {
+    tableTag.style.display = "table";
+
+    for (let book of books) {
+        const row = createBookRow(book.title, book.author, book.price);
+        render(bodyTableTag, row);
+    }
+}
                 
