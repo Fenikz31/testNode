@@ -62,3 +62,26 @@ console.log(absolutePath);
 
 console.log();
 console.log(path.parse('/abc.txt'));
+
+// MODULE URL
+const url = "https://dwaps.fr:8787/ort-toulouse/exercices/?eval=react#lab1";
+const dwapsUrl = new URL(url);
+
+console.log(dwapsUrl.toString());
+console.log(dwapsUrl);
+console.log(dwapsUrl.hostname);
+
+const sp = dwapsUrl.searchParams;
+
+console.log();
+console.log(sp.get("eval"));
+
+// Suppresion d'éléments dans l'URL
+const format = require("url").format;
+const options = {
+	auth: false,
+	search: false,
+	fragment: false
+}
+console.log();
+console.log(require("url").format(dwapsUrl,options));
