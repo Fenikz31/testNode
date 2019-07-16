@@ -1,11 +1,8 @@
 {
 	"folders": [
 		{
-			"path": "."
-		},
-		{
 			"name": "testNode",
-			"path": "W:\\mnt\\k\\projects\\testNode"
+			"path": "E:\\workspace\\testNode"
 		}
 	],
 	"settings": {}

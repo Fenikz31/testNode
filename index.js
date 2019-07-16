@@ -17,18 +17,38 @@ function render(parentTag, content) {
 }
 
 let books = [];
+buildTable();
 
-if (localStorage.getItem("books")) {
-    books = JSON.parse(localStorage.getItem("books"));
-    buildTable();
+function getbooks() {
+
+    if (windows.localStorage && localStorage.getItem("books")) {
+        try {
+            books = JSON.parse(localStorage.getItem("books"));
+        } catch (e) {
+            return [];
+        }
+    }
+    return [];
 }
-
-fetch("./books.json").then(function (data) {
-    data.json().then(function (booksJson) {
-        books = booksJson;
-
-        buildTable();
+    
+fetch("./books.json").then(function (response) {
+    response.json().then(function (booksJson) {
         saveData(booksJson);
+
+        if (books.length !== booksJson.length) {            
+            books = booksJson;
+            buildTable();
+        } else {
+            for ( let book of books) {
+                const bookJson = booksJson.filter(function (b){
+                    return b.title === book.title && b.author === book.author;
+                })[0];
+                if (bookJson.available !== book.available || bookJson.price === book.price) {
+                    books = booksJson;
+                    buildTable();
+                }
+            }
+        }
     });
 });
 

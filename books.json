@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Il était une fois",
+        "author": "Michael DUPONT",
+        "price": 15.44,
+        "available": true
+    }, {
+        "title": "Biographie d'un auteur",
+        "author": "Emilie DURAND",
+        "price": 6.88,
+        "available": true
+    }, {
+        "title": "Il était deux fois",
+        "author": "Stéphanie BERTRAND",
+        "price": 23.99,
+        "available": false
+    }
+]
