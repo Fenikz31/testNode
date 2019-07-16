@@ -1,9 +1,14 @@
 const EventsEmitter = require("events");
-const emitter = new  EventEmitter();
-emitter.on("FILE_IS_READING", function () {
-    console.log("L'événement FILE_IS_READING a été détecté!");
+const emitter = new  EventsEmitter();
+
+const months = ["Janvier","FÃ©vrier","Mars","Avril","Mai","Juin", "Juillet", "AoÃ»t","Septembre", "Octobre", "Novembre", "DÃ©cembre"];
+
+emitter.on("date", function (date) {
+    console.log("Date: %d %s %d", date.getDate(),months[date.getMonth()], date.getFullYear());
 });
 
-emitter.emit("FILE_IS_READING");
-
+emitter.emit("date", new Date(1983,4,2));
 console.log(new Date(1983,4,2));
+
+emitter.emit("date", new Date());
+console.log(new Date());
