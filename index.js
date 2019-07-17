@@ -1,12 +1,12 @@
-const util = require("util");
-const {promisify} = require("util");  // const promisify = require("util").promisify;
+const http = require("http");
+const PORT = 5676;
 
-const {readdir} = require("fs");
-const readdirPromise = promisify(readdir);
+// Création serveur
+const server = http.createServer((req, res) => {
+    res.write(`<h1>Bienvenue</h1>`)
+    res.end(`<h1>Hello !</h1>`);
+}); 
 
-readdir(".",(err,files)=>{
-    if(err) return;
-    console.log(files);
-});
 
-readdirPromise.then(files => console.log(files)).catch(e => console.error(e));
+// Ecoute sur un port ici 5676
+server.listen(PORT,() => console.log(`Listening on http://localhost:${PORT}`));
